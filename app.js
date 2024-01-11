@@ -9,7 +9,7 @@ import config from './config.js'
 const app = express()
 
 //app.use(compression())
-//app.use('/files', express.static(path.join(path.resolve(), '..', 'files')))
+app.use('/files', express.static(path.join(path.resolve(), '.', 'files')))
 
 app.use(express.json())
 //app.use(cors())

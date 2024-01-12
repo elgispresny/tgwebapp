@@ -130,6 +130,28 @@
         newgame.style.display = "none";
         timer.style.display = "block";
 
+        let imageUrls = [
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg"
+        ]
+
+        class CardImg {
+            id;
+            imgPath;
+
+            constructor(id) {
+                this.id = id;
+                this.imgPath = imageUrls[id - 1];
+            }
+        };
+
         for (let i = 0; i < card_number; i++) {
             let div = document.createElement('div');
             div.classList.add('card');
@@ -139,8 +161,10 @@
             div.style.background = tg.themeParams.button_color ? tg.themeParams.button_color : "#5086bd";
             div.style.color = tg.themeParams.button_text_color ? tg.themeParams.button_text_color : "#ffffff";
 
+            let newone;
             while (true) {
-                newone = randomInteger(1, card_number / 2);
+                let newoneId = randomInteger(1, card_number / 2);
+                newone = new CardImg(newoneId)
                 if (new_numbs.indexOf(newone) == -1) {
                     new_numbs.push(newone);
                     break;
@@ -152,7 +176,7 @@
 
             let in_div = document.createElement('div');
             let nftimg = document.createElement("img")
-            nftimg.src = "../files/1supersmall.jpg"
+            nftimg.src = newone.imgPath;
             in_div.appendChild(nftimg)
 
             div.append(in_div)

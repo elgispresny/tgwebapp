@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Найди пару by Zalexanninev15</title>
 
-    <script type="text/javascript" src="../build/telegram-web-app.js"></script>
+    <script type="text/javascript" src="./static/telegram-web-app.js"></script>
 
     <style>
         body {
@@ -130,17 +130,41 @@
         newgame.style.display = "none";
         timer.style.display = "block";
 
+        let imageUrls = [
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg",
+            "../files/1.jpg"
+        ]
+
+        class CardImg {
+            id;
+            imgPath;
+
+            constructor(id, imgPath) {
+                this.id = id;
+                this.imgPath = imgPath;
+            }
+        };
+
         for (let i = 0; i < card_number; i++) {
             let div = document.createElement('div');
             div.classList.add('card');
             div.classList.add('hidden');
             div.id = `card${i+1}`;
+            let newone;
 
             div.style.background = tg.themeParams.button_color ? tg.themeParams.button_color : "#5086bd";
             div.style.color = tg.themeParams.button_text_color ? tg.themeParams.button_text_color : "#ffffff";
 
             while (true) {
-                newone = randomInteger(1, card_number / 2);
+                newoneId = randomInteger(1, card_number / 2);
+                newone = new CardImg(newoneId, imageUrls[newoneId])
                 if (new_numbs.indexOf(newone) == -1) {
                     new_numbs.push(newone);
                     break;
@@ -151,7 +175,9 @@
             }
 
             let in_div = document.createElement('div');
-            in_div.innerText = newone;
+            let nftimg = document.createElement("img")
+            nftimg.src = newone.imgPath;
+            in_div.appendChild(nftimg)
 
             div.append(in_div)
 

@@ -132,14 +132,14 @@
 
         let imageUrls = [
             "../files/1.jpg",
-            "../files/1.jpg",
-            "../files/1.jpg",
-            "../files/1.jpg",
-            "../files/1.jpg",
-            "../files/1.jpg",
-            "../files/1.jpg",
-            "../files/1.jpg",
-            "../files/1.jpg"
+            "../files/1.jpeg",
+            "../files/2.jpeg",
+            "../files/3.jpeg",
+            "../files/4.jpeg",
+            "../files/5.jpeg",
+            "../files/6.jpeg",
+            "../files/7.jpeg",
+            "../files/8.jpeg"
         ]
 
         class CardImg {
@@ -193,7 +193,7 @@
                     game.style.pointerEvents = "auto";
                 } else {
                     this.classList.remove('hidden');
-                    if (this.textContent == document.getElementById(first_card).textContent) {
+                    if (newone.id == document.getElementById(first_card).textContent) {
                         first_card = '';
                         game.style.pointerEvents = "auto";
                     } else {

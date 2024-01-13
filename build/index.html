@@ -162,8 +162,9 @@
             div.style.color = tg.themeParams.button_text_color ? tg.themeParams.button_text_color : "#ffffff";
 
             let newone;
+            let newoneId;
             while (true) {
-                let newoneId = randomInteger(1, card_number / 2);
+                newoneId = randomInteger(1, card_number / 2);
                 newone = new CardImg(newoneId)
                 if (new_numbs.indexOf(newone) == -1) {
                     new_numbs.push(newone);
@@ -180,6 +181,7 @@
             in_div.appendChild(nftimg)
 
             div.append(in_div)
+            console.log(in_div.id)
 
             div.addEventListener('click', function() {
 

@@ -10,12 +10,12 @@
 
     <style>
         body {
-            margin: 0;
+            margin: 0 0 20px 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: space-around;
             height: 99vh;
             width: 100%;
             font-family: sans-serif;
@@ -30,13 +30,15 @@
             grid-column-gap: 10px;
             width: 90vh;
             height: 90vh;
-            font-size: 40px;
+            font-size: 10px;
             margin-bottom: 20px;
+            margin-right: 20px;
         }
 
         .card {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
             /* background: #48426d;
             color: #f0c38e; */
@@ -94,7 +96,7 @@
 <body>
     <div class="game">
     </div>
-
+    <p>Open cards and find pairs of bears</p>
     <div id="timer">00</div>
     <div id="newgame">
         Сыграть еще раз
@@ -164,24 +166,25 @@
             let newone;
             let newoneId;
             while (true) {
-                newoneId = randomInteger(1, card_number / 2);
-                newone = new CardImg(newoneId)
-                if (new_numbs.indexOf(newone) == -1) {
-                    new_numbs.push(newone);
-                    break;
-                } else if (new_numbs.indexOf(newone) == new_numbs.lastIndexOf(newone)) {
-                    new_numbs.push(newone);
-                    break;
-                }
-            }
+    newoneId = randomInteger(1, card_number / 2);
+    let potentialNewOne = new CardImg(newoneId);
+
+    if (new_numbs.filter(card => card.id === potentialNewOne.id).length < 2) {
+        newone = potentialNewOne;
+        new_numbs.push(newone);
+        break;
+    }
+}
 
             let in_div = document.createElement('div');
             let nftimg = document.createElement("img")
             nftimg.src = newone.imgPath;
-            in_div.appendChild(nftimg)
+            in_div.appendChild(nftimg);
+            in_div.append(newone.id);
+            
+            
 
             div.append(in_div)
-            console.log(in_div.id)
 
             div.addEventListener('click', function() {
 
